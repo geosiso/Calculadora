@@ -1,9 +1,18 @@
 import React from 'react';
-import { TouchableOpacity as TO, Dimensions, StyleSheet, Text, View } from 'react-native';
+import { TouchableOpacity as TO, Dimensions, StyleSheet, Text, View, Display } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 
 
 const vw = Dimensions.get("screen").width;
+
+    this.state = {
+        display:"0",
+    };
+
+onDigitPress = (digit) => {
+    
+}
+
 
 export function Calculadora() {
     return (
@@ -12,11 +21,11 @@ export function Calculadora() {
                 <Text style={styles.name}>Calculadora </Text> 
             </View>
             <View style={styles.container} >
-                <Text style={styles.visor}> 0</Text>
+                <Text style={styles.visor} display={this.state.display}/>
             </View>
             <View >
                 <View style={styles.buttons}>
-                <TO onPress={() => {}}>
+                <TO onPress={() => {this.onDigitPress("AC")}}>
                     <View style={styles.functions1}>
                         <Text style={styles.letters}>AC</Text>
                     </View>
