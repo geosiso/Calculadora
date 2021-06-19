@@ -39,8 +39,15 @@ export function Calculadora() {
         return setResultText(resultText.toString().substring(0,resultText.length-1));
         }
 
+        if (operation == "+/-") {
+            setResultText(-1*resultText);
+            return;
+            }
+        
         if (operations.includes(resultText.toString().split("").pop())) return;
         setResultText(resultText + operation);
+
+       
     }
 
     return (
