@@ -20,20 +20,27 @@ export function Calculadora() {
         setResultText(resultText + text);
     };
 
-    const calculateResult = () => {};
+    const calculateResult = () => {
+        setCalcText(eval(resultText))
+    };
 
 
 
-    const onOperationClick = (text) => {
+    const onOperationClick = (operation) => {
+        let operations = ["DEL", "+", "-", "*", "/", "+/-","%"];
 
-        if (text == "AC") {
+        if (operation == "AC") {
             setResultText("");
             setCalcText("0");
             return;
         }
 
-        console.log(text);
-        setResultText(resultText + text);
+        if (operation == "DEL") {
+        return setResultText(resultText.toString().substring(0,resultText.length-1));
+        }
+
+        if (operations.includes(resultText.toString().split("").pop())) return;
+        setResultText(resultText + operation);
     }
 
     return (
@@ -114,7 +121,7 @@ export function Calculadora() {
                         <Text style={styles.letters2}>6</Text>
                     </View>
                 </TO>
-                <TO onPress={() => onOperationClick("x")}>
+                <TO onPress={() => onOperationClick("*")}>
                     <View style={styles.functions2}>
                         <Text style={styles.letters}>x</Text>
                     </View>
@@ -201,8 +208,8 @@ const styles=StyleSheet.create({
     },
 
     visor2:{
-        color: "#555555",
-        fontSize:25,
+        color: "#D3D3D3",
+        fontSize:30,
         textAlign: "right",
 
     },
